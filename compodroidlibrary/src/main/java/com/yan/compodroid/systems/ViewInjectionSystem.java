@@ -3,7 +3,7 @@ package com.yan.compodroid.systems;
 import android.os.Bundle;
 import android.view.View;
 
-import com.yan.compodroid.core.AbstractSystem;
+import com.yan.compodroid.core.CompodroidSystem;
 import com.yan.compodroid.utils.ReflectUtils;
 
 import java.lang.annotation.ElementType;
@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * Created by Yan-Home on 5/10/2015.
  */
-public class ViewInjectionSystem extends AbstractSystem<Object> {
+public class ViewInjectionSystem extends CompodroidSystem<Object> {
 
     private final RootViewProvider mRootViewProvider;
 
@@ -31,8 +31,7 @@ public class ViewInjectionSystem extends AbstractSystem<Object> {
     }
 
 
-    public ViewInjectionSystem(final Object target, final RootViewProvider rootViewProvider) {
-        super(target);
+    public ViewInjectionSystem(final RootViewProvider rootViewProvider) {
         mRootViewProvider = rootViewProvider;
     }
 

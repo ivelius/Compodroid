@@ -1,19 +1,20 @@
 package com.yan.compodroid.core;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
 /**
- * Created by Yan-Home on 5/10/2015.
+ * This interface exposes various android Activities and Fragment lifecycle
  */
 interface ILifecycleDelegate {
 
-    void onCreate(Bundle savedInstanceState);
+    void onCreate(final @NonNull Bundle savedInstanceState);
 
-    void onCreateOptionsMenu(Menu menu);
+    void onCreateOptionsMenu(final @NonNull Menu menu);
 
-    void onOptionsItemSelected(MenuItem item);
+    void onOptionsItemSelected(final @NonNull MenuItem item);
 
-    void onSaveInstanceState(final Bundle outState);
+    void onSaveInstanceState(final @NonNull  Bundle outState);
 }

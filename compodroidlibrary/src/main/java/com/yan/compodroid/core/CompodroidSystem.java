@@ -7,13 +7,8 @@ import android.view.MenuItem;
 /**
  * Created by Yan-Home on 5/10/2015.
  */
-public class AbstractSystem<T> implements ISystem {
-    protected final T mTarget;
-
-    public AbstractSystem(final T target) {
-        mTarget = target;
-    }
-
+public abstract class CompodroidSystem<T> implements ILifecycleDelegate {
+    protected T mTarget;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -33,5 +28,14 @@ public class AbstractSystem<T> implements ISystem {
     @Override
     public void onSaveInstanceState(final Bundle outState) {
         //Override
+    }
+
+
+    public T getTarget() {
+        return mTarget;
+    }
+
+    public void setTarget(final T target) {
+        mTarget = target;
     }
 }

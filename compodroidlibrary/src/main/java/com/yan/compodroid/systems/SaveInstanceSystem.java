@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Pair;
 
-import com.yan.compodroid.core.AbstractSystem;
+import com.yan.compodroid.core.CompodroidSystem;
 import com.yan.compodroid.utils.ReflectUtils;
 
 import java.io.Serializable;
@@ -18,16 +18,13 @@ import java.util.Set;
 /**
  * Created by Yan-Home on 5/10/2015.
  */
-public class SaveInstanceSystem extends AbstractSystem {
+public class SaveInstanceSystem extends CompodroidSystem {
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     public @interface SaveInstanceState {
     }
 
-    public SaveInstanceSystem(final Object target) {
-        super(target);
-    }
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {

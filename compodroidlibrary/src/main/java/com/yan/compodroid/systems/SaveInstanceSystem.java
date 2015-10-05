@@ -1,11 +1,11 @@
-package com.yan.compodroidlibrary.systems.core;
+package com.yan.compodroid.systems;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Pair;
 
-import com.yan.compodroidlibrary.systems.AbstractSystem;
-import com.yan.compodroidlibrary.utils.ReflectUtils;
+import com.yan.compodroid.core.AbstractSystem;
+import com.yan.compodroid.utils.ReflectUtils;
 
 import java.io.Serializable;
 import java.lang.annotation.ElementType;

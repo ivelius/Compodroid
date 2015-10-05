@@ -1,4 +1,4 @@
-package com.yan.compodroidlibrary;
+package com.yan.compodroid;
 
 import org.junit.Test;
 

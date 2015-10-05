@@ -1,4 +1,4 @@
-package com.yan.compodroidlibrary.utils;
+package com.yan.compodroid.utils;
 
 import android.support.annotation.NonNull;
 

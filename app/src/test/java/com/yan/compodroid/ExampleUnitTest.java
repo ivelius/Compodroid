@@ -1,4 +1,4 @@
-package com.yan.compodroid;
+package com.yan.compodroidtest;
 
 import org.junit.Test;
 

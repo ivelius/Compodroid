@@ -1,10 +1,8 @@
-package com.yan.compodroidlibrary.systems;
+package com.yan.compodroid.core;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.yan.compodroidlibrary.ISystem;
 
 /**
  * Created by Yan-Home on 5/10/2015.

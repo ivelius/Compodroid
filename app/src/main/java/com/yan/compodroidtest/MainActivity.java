@@ -1,4 +1,4 @@
-package com.yan.compodroid;
+package com.yan.compodroidtest;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,9 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yan.compodroidlibrary.CompodroidSystemsManager;
-import com.yan.compodroidlibrary.systems.core.SaveInstanceSystem;
-import com.yan.compodroidlibrary.systems.core.ViewInjectionSystem;
+import com.yan.compodroid.core.CompodroidSystemsManager;
+import com.yan.compodroid.systems.SaveInstanceSystem;
+import com.yan.compodroid.systems.ViewInjectionSystem;
 
 public class MainActivity extends AppCompatActivity implements ViewInjectionSystem.RootViewProvider {
 

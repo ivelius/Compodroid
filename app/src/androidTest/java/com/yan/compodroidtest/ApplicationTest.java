@@ -1,4 +1,4 @@
-package com.yan.compodroidlibrary;
+package com.yan.compodroidtest;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

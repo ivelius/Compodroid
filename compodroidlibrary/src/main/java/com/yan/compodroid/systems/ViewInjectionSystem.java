@@ -1,10 +1,10 @@
-package com.yan.compodroidlibrary.systems.core;
+package com.yan.compodroid.systems;
 
 import android.os.Bundle;
 import android.view.View;
 
-import com.yan.compodroidlibrary.systems.AbstractSystem;
-import com.yan.compodroidlibrary.utils.ReflectUtils;
+import com.yan.compodroid.core.AbstractSystem;
+import com.yan.compodroid.utils.ReflectUtils;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

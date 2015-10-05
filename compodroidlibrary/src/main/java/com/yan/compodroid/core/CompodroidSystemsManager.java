@@ -1,4 +1,4 @@
-package com.yan.compodroidlibrary;
+package com.yan.compodroid.core;
 
 import android.os.Bundle;
 import android.view.Menu;

@@ -15,9 +15,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        //This endpoint declaration can be different in case there are
-        //several endpoints (for example "staging" or "production")
-        buildConfigField "String", "ENDPOINT", "\"http://www.kayak.com/\""
     }
     buildTypes {
         release {

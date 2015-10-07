@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: "maven-publish"
+apply plugin: 'maven'
 
 //Those are repositories we are looking into when building
 //the project
@@ -11,43 +11,16 @@ repositories {
     }
 }
 
-//here we specify source sets for maven publication
-sourceSets {
-    //we call this source set a publication , and including only the source
-    //folder that we want to ship into jar
-    publication {
-        java.srcDirs = ['src/main/java']
-    }
-}
-
-//this is the task that defines jar that we will publish
-task publishJar(type: Jar) {
-    from sourceSets.publication.allJava
-}
-
-publishing {
-    //all publications defined here
-    publications {
-
-        //TODO : Run "gradle publish" to upload the Jar to maven repo
-        //we call this publication "gameLogicPublication" , and saying that it is a maven publication
-        gameLogicPublication(MavenPublication) {
-            groupId 'com.yan.compodroid'
-            artifactId 'compodroid-lib'
-            version '1.0-SNAPSHOT'
-
-            //here we define the jar that will be published
-            artifact(publishJar) {
-                classifier null
-            }
-        }
-    }
+//TODO : run "uploadArchives" to publish into maven repo
+uploadArchives {
     repositories {
-        //maven repository is just a local path to the dropbox folder
-        //this is where published jar will go
-        maven {
-            url "file:///E:/Dropbox/public/maven-repo"
-//            url "file:///C:/Users/yan.braslavsky/Dropbox/public/maven-repo"
+        mavenDeployer {
+            repository(url: "file:///Users/yan.braslavski/Dropbox/Public/maven-repo")
+//            repository(url: "file:///E:/Dropbox/public/maven-repo")
+            pom.groupId = 'com.yan.compodroid'
+            pom.artifactId = 'compodroid-lib'
+//            pom.version = '1.0'
+            pom.version = '1.0-SNAPSHOT'
         }
     }
 }

@@ -1,9 +1,10 @@
-package com.yan.compodroid.systems;
+package com.yan.compodroid.components;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.yan.compodroid.core.CompodroidSystem;
+import com.yan.compodroid.core.activity.CompodroidActivityComponent;
 import com.yan.compodroid.utils.ReflectUtils;
 
 import java.lang.annotation.ElementType;
@@ -16,7 +17,7 @@ import java.util.Set;
 /**
  * Created by Yan-Home on 5/10/2015.
  */
-public class ViewInjectionSystem extends CompodroidSystem<Object> {
+public class ViewInjectionComponent extends CompodroidActivityComponent<Activity> {
 
     private final RootViewProvider mRootViewProvider;
 
@@ -31,7 +32,7 @@ public class ViewInjectionSystem extends CompodroidSystem<Object> {
     }
 
 
-    public ViewInjectionSystem(final RootViewProvider rootViewProvider) {
+    public ViewInjectionComponent(final RootViewProvider rootViewProvider) {
         mRootViewProvider = rootViewProvider;
     }
 
@@ -39,10 +40,10 @@ public class ViewInjectionSystem extends CompodroidSystem<Object> {
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final Set<Field> annotatedViewFields = ReflectUtils.findFields(mTarget.getClass(), InjectView.class);
+        final Set<Field> annotatedViewFields = ReflectUtils.findFields(getTarget().getClass(), InjectView.class);
         for (Field field : annotatedViewFields) {
             int viewId = field.getAnnotation(InjectView.class).value();
-            ReflectUtils.assignValueToField(mTarget, field, mRootViewProvider.provideRootView().findViewById(viewId));
+            ReflectUtils.assignValueToField(getTarget(), field, mRootViewProvider.provideRootView().findViewById(viewId));
         }
     }
 }

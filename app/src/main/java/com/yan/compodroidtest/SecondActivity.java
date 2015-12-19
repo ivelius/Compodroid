@@ -11,21 +11,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.yan.compodroid.components.InjectBundleExtraComponent;
+import com.yan.compodroid.components.SaveInstanceComponent;
+import com.yan.compodroid.components.ViewInjectionComponent;
 import com.yan.compodroid.core.Compodroid;
-import com.yan.compodroid.core.CompodroidSystemsManager;
-import com.yan.compodroid.systems.InjectBundleExtraSystem;
-import com.yan.compodroid.systems.SaveInstanceSystem;
-import com.yan.compodroid.systems.ViewInjectionSystem;
+import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
 
-public class SecondActivity extends AppCompatActivity implements ViewInjectionSystem.RootViewProvider {
+public class SecondActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
 
     private static final String EXTRA_KEY = "extra_key";
-    private final CompodroidSystemsManager mSystemsManager;
+    private final CompodroidActivityComponentsManager mComponentsManager;
 
-    @ViewInjectionSystem.InjectView(R.id.text_view)
+    @ViewInjectionComponent.InjectView(R.id.text_view)
     private TextView mTextView;
 
-    @InjectBundleExtraSystem.InjectBundleExtra(EXTRA_KEY)
+    @InjectBundleExtraComponent.InjectBundleExtra(EXTRA_KEY)
     private boolean mState;
 
     public static Intent createIntent(final @NonNull Context ctx,
@@ -36,17 +36,17 @@ public class SecondActivity extends AppCompatActivity implements ViewInjectionSy
     }
 
     public SecondActivity() {
-        mSystemsManager = Compodroid.createSystemManager(this);
-        mSystemsManager.addSystem(new ViewInjectionSystem(this));
-        mSystemsManager.addSystem(new SaveInstanceSystem());
-        mSystemsManager.addSystem(new InjectBundleExtraSystem());
+        mComponentsManager = Compodroid.createActivityComponentManager(this);
+        mComponentsManager.addComponent(new ViewInjectionComponent(this));
+        mComponentsManager.addComponent(new SaveInstanceComponent());
+        mComponentsManager.addComponent(new InjectBundleExtraComponent());
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        mSystemsManager.onCreate(savedInstanceState);
+        mComponentsManager.onCreate(savedInstanceState);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,7 +61,7 @@ public class SecondActivity extends AppCompatActivity implements ViewInjectionSy
 
     @Override
     protected void onSaveInstanceState(final Bundle outState) {
-        mSystemsManager.onSaveInstanceState(outState);
+        mComponentsManager.onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
     }
 

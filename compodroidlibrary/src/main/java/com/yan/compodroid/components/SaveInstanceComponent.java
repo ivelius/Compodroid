@@ -1,10 +1,11 @@
-package com.yan.compodroid.systems;
+package com.yan.compodroid.components;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Pair;
 
-import com.yan.compodroid.core.CompodroidSystem;
+import com.yan.compodroid.core.activity.CompodroidActivityComponent;
 import com.yan.compodroid.utils.ReflectUtils;
 
 import java.io.Serializable;
@@ -18,7 +19,7 @@ import java.util.Set;
 /**
  * Created by Yan-Home on 5/10/2015.
  */
-public class SaveInstanceSystem extends CompodroidSystem {
+public class SaveInstanceComponent extends CompodroidActivityComponent<Activity> {
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
@@ -31,10 +32,10 @@ public class SaveInstanceSystem extends CompodroidSystem {
         if (savedInstanceState == null)
             return;
 
-        final Set<Field> fieldsToRestore = ReflectUtils.findFields(mTarget.getClass(), SaveInstanceState.class);
+        final Set<Field> fieldsToRestore = ReflectUtils.findFields(getTarget().getClass(), SaveInstanceState.class);
         for (Field field : fieldsToRestore) {
             Serializable serializable = savedInstanceState.getSerializable(field.getName());
-            ReflectUtils.assignValueToField(mTarget,field, serializable);
+            ReflectUtils.assignValueToField(getTarget(),field, serializable);
         }
 
     }
@@ -44,7 +45,7 @@ public class SaveInstanceSystem extends CompodroidSystem {
     Pair<String, Serializable> createSaveInstancePair(final Field field) {
         try {
             field.setAccessible(true);
-            final Serializable value = (Serializable) field.get(mTarget);
+            final Serializable value = (Serializable) field.get(getTarget());
             final String key = field.getName();
             return new Pair<>(key, value);
         } catch (IllegalAccessException e) {
@@ -56,7 +57,7 @@ public class SaveInstanceSystem extends CompodroidSystem {
 
     @Override
     public void onSaveInstanceState(final Bundle outState) {
-        final Set<Field> fieldsToSave = ReflectUtils.findFields(mTarget.getClass(), SaveInstanceState.class);
+        final Set<Field> fieldsToSave = ReflectUtils.findFields(getTarget().getClass(), SaveInstanceState.class);
         for (Field field : fieldsToSave) {
             final Pair<String, Serializable> pair = createSaveInstancePair(field);
             if (pair != null) {

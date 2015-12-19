@@ -7,33 +7,33 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.yan.compodroid.components.SaveInstanceComponent;
+import com.yan.compodroid.components.ViewInjectionComponent;
 import com.yan.compodroid.core.Compodroid;
-import com.yan.compodroid.core.CompodroidSystemsManager;
-import com.yan.compodroid.systems.SaveInstanceSystem;
-import com.yan.compodroid.systems.ViewInjectionSystem;
+import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
 
-public class MainActivity extends AppCompatActivity implements ViewInjectionSystem.RootViewProvider {
+public class MainActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
 
-    private final CompodroidSystemsManager mSystemsManager;
 
-    @SaveInstanceSystem.SaveInstanceState
+    private final CompodroidActivityComponentsManager mComponentsManager;
+    @SaveInstanceComponent.SaveInstanceState
     private boolean mSaved;
 
-    @ViewInjectionSystem.InjectView(R.id.text_view)
+    @ViewInjectionComponent.InjectView(R.id.text_view)
     private TextView mTextView;
 
 
     public MainActivity() {
-        mSystemsManager = Compodroid.createSystemManager(this);
-        mSystemsManager.addSystem(new ViewInjectionSystem(this));
-        mSystemsManager.addSystem(new SaveInstanceSystem());
+        mComponentsManager = Compodroid.createActivityComponentManager(this);
+        mComponentsManager.addComponent(new ViewInjectionComponent(this));
+        mComponentsManager.addComponent(new SaveInstanceComponent());
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mSystemsManager.onCreate(savedInstanceState);
+        mComponentsManager.onCreate(savedInstanceState);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements ViewInjectionSyst
 
     @Override
     protected void onSaveInstanceState(final Bundle outState) {
-        mSystemsManager.onSaveInstanceState(outState);
+        mComponentsManager.onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
     }
 

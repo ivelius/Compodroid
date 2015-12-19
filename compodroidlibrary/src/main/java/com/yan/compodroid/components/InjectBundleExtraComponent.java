@@ -1,12 +1,10 @@
-package com.yan.compodroid.systems;
+package com.yan.compodroid.components;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Pair;
 
-import com.yan.compodroid.core.CompodroidSystem;
+import com.yan.compodroid.core.activity.CompodroidActivityComponent;
 import com.yan.compodroid.utils.ReflectUtils;
 
 import java.io.Serializable;
@@ -20,7 +18,7 @@ import java.util.Set;
 /**
  * Created by Yan-Home on 5/10/2015.
  */
-public class InjectBundleExtraSystem extends CompodroidSystem<Activity> {
+public class InjectBundleExtraComponent extends CompodroidActivityComponent<Activity> {
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
@@ -30,16 +28,16 @@ public class InjectBundleExtraSystem extends CompodroidSystem<Activity> {
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
-        final Intent intent = mTarget.getIntent();
+        final Intent intent = getTarget().getIntent();
         final Bundle extras = intent.getExtras();
         if (intent == null || extras == null)
             return;
 
-        final Set<Field> fieldsToRestore = ReflectUtils.findFields(mTarget.getClass(), InjectBundleExtra.class);
+        final Set<Field> fieldsToRestore = ReflectUtils.findFields(getTarget().getClass(), InjectBundleExtra.class);
         for (Field field : fieldsToRestore) {
             final String bundleExtraKey = field.getAnnotation(InjectBundleExtra.class).value();
             Serializable serializable = extras.getSerializable(bundleExtraKey);
-            ReflectUtils.assignValueToField(mTarget, field, serializable);
+            ReflectUtils.assignValueToField(getTarget(), field, serializable);
         }
     }
 }

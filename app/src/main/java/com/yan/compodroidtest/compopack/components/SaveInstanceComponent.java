@@ -1,4 +1,4 @@
-package com.yan.compodroid.components;
+package com.yan.compodroidtest.compopack.components;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.Pair;
 
 import com.yan.compodroid.core.activity.CompodroidActivityComponent;
-import com.yan.compodroid.utils.ReflectUtils;
+import com.yan.compodroidtest.compopack.utils.ReflectUtils;
 
 import java.io.Serializable;
 import java.lang.annotation.ElementType;

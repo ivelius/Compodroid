@@ -11,9 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yan.compodroid.components.InjectBundleExtraComponent;
-import com.yan.compodroid.components.SaveInstanceComponent;
-import com.yan.compodroid.components.ViewInjectionComponent;
+import com.yan.compodroidtest.compopack.components.InjectBundleExtraComponent;
+import com.yan.compodroidtest.compopack.components.SaveInstanceComponent;
+import com.yan.compodroidtest.compopack.components.ViewInjectionComponent;
 import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
 

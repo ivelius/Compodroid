@@ -7,10 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yan.compodroidtest.compopack.components.SaveInstanceComponent;
-import com.yan.compodroidtest.compopack.components.ViewInjectionComponent;
 import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
+import com.yan.compodroidtest.compopack.components.SaveInstanceComponent;
+import com.yan.compodroidtest.compopack.components.ViewInjectionComponent;
 
 public class MainActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
 

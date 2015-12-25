@@ -26,7 +26,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':compodroidlibrary')
+    compile "com.yan.compodroid:compodroid-lib:$rootProject.ext.versionName"
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:recyclerview-v7:23.+'

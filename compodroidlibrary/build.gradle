@@ -1,51 +1,53 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
-//Those are repositories we are looking into when building
-//the project
-repositories {
-    mavenCentral()
-    maven {
-        //this is a public path into my maven repository
-        url "https://dl.dropboxusercontent.com/u/48976508/maven-repo"
-    }
+//Define module specific properties
+ext {
+    // Sdk and tools
+    minSdkVersion = 14
+    targetSdkVersion = 23
+    compileSdkVersion = 23
+    buildToolsVersion = '23.0.2'
+
+    //publishing
+    mvnGroupId = 'com.yan.compodroid'
+    mvnArtifactId = 'compodroid-lib'
+    mvnPublishUrl = "file:///$rootProject.projectDir//compodroidlibrary/mavenrepo"
+
+    // App dependencies
+    JUnit = '4.12'
 }
 
 //TODO : run "uploadArchives" to publish into maven repo
 uploadArchives {
     repositories {
         mavenDeployer {
-//            repository(url: "file:///Users/yan.braslavski/Dropbox/Public/maven-repo")
-//            repository(url: "file:///E:/Dropbox/public/maven-repo")
-            repository(url: "file:///E:/Android/AndroidStudioWorkspace/Compodroid/compodroidlibrary/mavenrepo")
-            pom.groupId = 'com.yan.compodroid'
-            pom.artifactId = 'compodroid-lib'
-//            pom.version = '1.0'
-            pom.version = '1.0-SNAPSHOT'
+            repository(url: project.ext.mvnPublishUrl)
+            pom.groupId = project.ext.mvnGroupId
+            pom.artifactId = project.ext.mvnArtifactId
+            pom.version = rootProject.ext.versionName
         }
     }
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.0.1'
+    testCompile "junit:junit:$project.ext.JUnit"
 }

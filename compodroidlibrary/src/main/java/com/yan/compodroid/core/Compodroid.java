@@ -1,7 +1,6 @@
 package com.yan.compodroid.core;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 
 import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
 
@@ -18,7 +17,7 @@ public class Compodroid {
      * @param <A>      Target type
      * @return new instance of {@link CompodroidActivityComponentsManager}
      */
-    public static <A extends Activity> CompodroidActivityComponentsManager createActivityComponentManager(final @NonNull A activity) {
+    public static <A extends Activity> CompodroidActivityComponentsManager createActivityComponentManager(final A activity) {
         return new CompodroidActivityComponentsManager(activity);
     }
 

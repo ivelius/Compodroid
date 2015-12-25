@@ -1,5 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     repositories {
         jcenter()
@@ -15,9 +14,20 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        mavenCentral()
+        maven {
+            //this is a public path into my maven repository hosted on github
+            url "https://raw.githubusercontent.com/ivelius/Compodroid/master/compodroidlibrary/mavenrepo/"
+        }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext{
+    //Versioning
+    versionCode = 1
+    versionName = '1.0-SNAPSHOT'
 }

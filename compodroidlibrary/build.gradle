@@ -16,7 +16,8 @@ uploadArchives {
     repositories {
         mavenDeployer {
 //            repository(url: "file:///Users/yan.braslavski/Dropbox/Public/maven-repo")
-            repository(url: "file:///E:/Dropbox/public/maven-repo")
+//            repository(url: "file:///E:/Dropbox/public/maven-repo")
+            repository(url: "file:///E:/Android/AndroidStudioWorkspace/Compodroid/compodroidlibrary/mavenrepo")
             pom.groupId = 'com.yan.compodroid'
             pom.artifactId = 'compodroid-lib'
 //            pom.version = '1.0'

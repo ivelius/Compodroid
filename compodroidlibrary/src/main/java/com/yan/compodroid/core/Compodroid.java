@@ -12,7 +12,7 @@ import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
 public class Compodroid {
 
     /**
-     * Creates a system manager that operates on Activity , as long as Activity is alive.
+     * Creates a component manager that operates on Activity , as long as Activity is alive.
      *
      * @param activity activity that components operate on
      * @param <A>      Target type

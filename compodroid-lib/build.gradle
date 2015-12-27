@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+//Define module specific properties
+ext {
+
+    //Bintray publishing information
+    bintrayRepo = 'maven'
+    bintrayName = 'compodroid'
+
+    publishedGroupId = 'com.yan.compodroid'
+    libraryName = 'compodroid'
+    artifact = 'compodroid-lib'
+
+    libraryDescription = 'A component oriented android framework'
+
+    siteUrl = 'https://github.com/ivelius/Compodroid'
+    gitUrl = 'https://github.com/ivelius/Compodroid.git'
+
+    libraryVersion = rootProject.ext.versionName
+
+    developerId = 'ivelius'
+    developerName = 'Yan Braslavsky'
+    developerEmail = 'yan.braslavskiy@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+
+    // App dependencies
+    JUnit = '4.12'
+
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    testCompile "junit:junit:$project.ext.JUnit"
+}
+
+//Needed for building and uploading to bintray
+//TODO : run "bintrayUpload" to publish into bintray maven repo
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

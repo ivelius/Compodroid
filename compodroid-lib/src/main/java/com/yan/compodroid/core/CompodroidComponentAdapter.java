@@ -26,6 +26,7 @@ public abstract class CompodroidComponentAdapter<DT,
 
     /**
      * Generates adapted component
+     * @return adapted component
      */
     public abstract OC adapt();
 

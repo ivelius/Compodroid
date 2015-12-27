@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Compodroid.iml" filepath="$PROJECT_DIR$/Compodroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/compodroidlibrary/compodroidlibrary.iml" filepath="$PROJECT_DIR$/compodroidlibrary/compodroidlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/compodroid-lib/compodroid-lib.iml" filepath="$PROJECT_DIR$/compodroid-lib/compodroid-lib.iml" />
     </modules>
   </component>
 </project>

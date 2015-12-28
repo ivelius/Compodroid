@@ -49,13 +49,11 @@ public class MainActivity extends AppCompatActivity implements ViewInjectionComp
 
     }
 
-
     @Override
     protected void onSaveInstanceState(final Bundle outState) {
         mComponentsManager.onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
     }
-
 
     @Override
     public View provideRootView() {

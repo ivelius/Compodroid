@@ -8,11 +8,21 @@ package com.yan.compodroid.core;
 public abstract class CompodroidComponent<T> {
     protected T mTarget;
 
+    /**
+     * Returns concrete object that is "braked" to components.
+     *
+     * @return target object that all components operate on
+     */
     public T getTarget() {
         return mTarget;
     }
 
-    public void setTarget(final T target) {
+    /**
+     * For internal use by {@link CompodroidComponentManager}
+     *
+     * @param target object that all components operate on
+     */
+    protected void setTarget(final T target) {
         mTarget = target;
     }
 }

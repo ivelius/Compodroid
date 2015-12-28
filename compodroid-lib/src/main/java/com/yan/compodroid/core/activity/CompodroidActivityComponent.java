@@ -2,6 +2,7 @@ package com.yan.compodroid.core.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,8 @@ import com.yan.compodroid.core.CompodroidComponent;
 
 /**
  * Created by yan.braslavski on 11/18/15.
+ *
+ * Activity component is connected with a lyfecycle of the target Activity.
  *
  * @param <A> Concrete targeted Activity
  */
@@ -33,7 +36,7 @@ public abstract class CompodroidActivityComponent<A extends Activity> extends
         //Override
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         //Override
     }
 
@@ -46,7 +49,27 @@ public abstract class CompodroidActivityComponent<A extends Activity> extends
         return false;
     }
 
-    public boolean onCustomEvent(String name, Bundle data) {
+    protected void onStart() {
+        //Override
+    }
+
+    protected void onStop() {
+        //Override
+    }
+
+    protected void onPause() {
+        //Override
+    }
+
+    protected void onResume() {
+        //Override
+    }
+
+    public void onConfigurationChanged(final Configuration newConfig) {
+        //Override
+    }
+
+    public boolean onCustomEvent(final String name, final Bundle data) {
         //Override
         return false;
     }

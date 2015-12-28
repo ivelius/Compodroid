@@ -20,16 +20,22 @@ public abstract class CompodroidComponentAdapter<DT,
 
     private final IC mAdaptee;
 
-    public CompodroidComponentAdapter(IC adaptee){
+    public CompodroidComponentAdapter(IC adaptee) {
         mAdaptee = adaptee;
     }
 
     /**
      * Generates adapted component
+     *
      * @return adapted component
      */
     public abstract OC adapt();
 
+    /**
+     * Returns the source component that is being adapted
+     *
+     * @return source component
+     */
     public IC getAdaptee() {
         return mAdaptee;
     }

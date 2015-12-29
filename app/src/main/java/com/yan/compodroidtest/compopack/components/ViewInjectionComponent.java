@@ -21,6 +21,16 @@ public class ViewInjectionComponent extends CompodroidActivityComponent<Activity
 
     private final RootViewProvider mRootViewProvider;
 
+    @Override
+    protected void onAddedToManager() {
+        //TODO : implement dynamic addition
+    }
+
+    @Override
+    protected void onRemovedFromManager() {
+        //TODO : implement dynamic removal
+    }
+
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     public @interface InjectView {

@@ -21,6 +21,16 @@ import java.util.Set;
  */
 public class SaveInstanceComponent extends CompodroidActivityComponent<Activity> {
 
+    @Override
+    protected void onAddedToManager() {
+        //TODO : implement dynamic addition
+    }
+
+    @Override
+    protected void onRemovedFromManager() {
+        //TODO : implement dynamic removal
+    }
+
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     public @interface SaveInstanceState {

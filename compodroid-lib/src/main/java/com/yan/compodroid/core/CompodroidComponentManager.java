@@ -41,6 +41,23 @@ public class CompodroidComponentManager<T, C extends CompodroidComponent<T>> {
             throw new IllegalArgumentException("Added component cannot be null !");
         component.setTarget(mTarget);
         mComponents.add(component);
+        component.onAddedToManager();
+    }
+
+    /**
+     * Removes the component from the manager.
+     * Requires the exact instance of a component to be removed
+     *
+     * @return true if component was removed , false otherwise
+     * @param component to be removed.
+     */
+    public boolean removeComponent(final C component) {
+        if (component == null)
+            throw new IllegalArgumentException("Remove component cannot be null !");
+        boolean isRemoved = mComponents.remove(component);
+        if(isRemoved)
+            component.onRemovedFromManager();
+        return isRemoved;
     }
 
     /**

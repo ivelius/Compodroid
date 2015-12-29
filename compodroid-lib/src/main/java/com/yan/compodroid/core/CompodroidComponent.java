@@ -25,4 +25,14 @@ public abstract class CompodroidComponent<T> {
     protected void setTarget(final T target) {
         mTarget = target;
     }
+
+    /**
+     * Called immideatley after is added to {@link CompodroidComponentManager}
+     */
+    protected abstract void onAddedToManager();
+
+    /**
+     * Called immideatley after removed {@link CompodroidComponentManager}
+     */
+    protected abstract void onRemovedFromManager();
 }

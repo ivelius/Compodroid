@@ -27,7 +27,9 @@ ext {
     allLicenses = ["Apache-2.0"]
 
     // App dependencies
-    JUnit = '4.12'
+    junitVersion = '4.12'
+    mockitoVersion = '1.10.19'
+    powerMockito = '1.6.2'
 
 }
 
@@ -50,7 +52,11 @@ android {
 }
 
 dependencies {
-    testCompile "junit:junit:$project.ext.JUnit"
+    // Dependencies for local unit tests
+    testCompile "junit:junit:$project.ext.junitVersion"
+    testCompile "org.mockito:mockito-all:$project.ext.mockitoVersion"
+    testCompile "org.powermock:powermock-module-junit4:$project.ext.powerMockito"
+    testCompile "org.powermock:powermock-api-mockito:$project.ext.powerMockito"
 }
 
 //Needed for building and uploading to bintray

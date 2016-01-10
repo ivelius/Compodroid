@@ -22,6 +22,16 @@ public class Compodroid {
     }
 
     /**
+     * Creates a generic component manager that operates on target.
+     *
+     * @param <T>      Target type
+     * @return new instance of {@link CompodroidComponentManager}
+     */
+    public static <T> CompodroidComponentManager<T,CompodroidComponent<T>> createGenericComponentManager(final T target) {
+        return new CompodroidComponentManager(target);
+    }
+
+    /**
      * For future adaptations of one component into another , consider using this example
      */
 //    public static void exampleOfComponentAdaptation() {

@@ -30,6 +30,7 @@ ext {
     junitVersion = '4.12'
     mockitoVersion = '1.10.19'
     powerMockito = '1.6.2'
+    commonsLang = '2.6'
 
 }
 
@@ -57,6 +58,7 @@ dependencies {
     testCompile "org.mockito:mockito-all:$project.ext.mockitoVersion"
     testCompile "org.powermock:powermock-module-junit4:$project.ext.powerMockito"
     testCompile "org.powermock:powermock-api-mockito:$project.ext.powerMockito"
+    testCompile "commons-lang:commons-lang:$project.ext.commonsLang"
 }
 
 //Needed for building and uploading to bintray

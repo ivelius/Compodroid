@@ -1,5 +1,7 @@
 package com.yan.compodroid.core;
 
+import android.os.Bundle;
+
 /**
  * Created by Yan-Home on 5/10/2015.
  *
@@ -35,4 +37,16 @@ public abstract class CompodroidComponent<T> {
      * Called immideatley after removed {@link CompodroidComponentManager}
      */
     protected abstract void onRemovedFromManager();
+
+    /**
+     * Used to send custom events that component will recieve.
+     *
+     * @param eventName event name
+     * @param data      event data wrapped in bundle
+     * @return true if one or more components consumed the event
+     */
+    public boolean onCustomEvent(final String name, final Bundle data) {
+        //Override
+        return false;
+    }
 }

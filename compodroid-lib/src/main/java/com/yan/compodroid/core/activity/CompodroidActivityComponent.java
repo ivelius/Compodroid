@@ -18,59 +18,66 @@ import com.yan.compodroid.core.CompodroidComponent;
  * @param <A> Concrete targeted Activity
  */
 public abstract class CompodroidActivityComponent<A extends Activity> extends
-        CompodroidComponent<A> {
+        CompodroidComponent<A> implements IActivityDelegateMethods{
 
+    @Override
     public void onCreate(final Bundle savedInstanceState) {
         //Override
     }
 
+    @Override
     public void onCreateOptionsMenu(final Menu menu) {
         //Override
     }
 
+    @Override
     public void onOptionsItemSelected(final MenuItem item) {
         //Override
     }
 
+    @Override
     public void onSaveInstanceState(final Bundle outState) {
         //Override
     }
 
+    @Override
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         //Override
     }
 
+    @Override
     public void onDestroy() {
         //Override
     }
 
+    @Override
     public boolean onBackPressed() {
         //Override
         return false;
     }
 
-    protected void onStart() {
+    @Override
+    public void onStart() {
         //Override
     }
 
-    protected void onStop() {
+    @Override
+    public void onStop() {
         //Override
     }
 
-    protected void onPause() {
+    @Override
+    public void onPause() {
         //Override
     }
 
-    protected void onResume() {
+    @Override
+    public void onResume() {
         //Override
     }
 
+    @Override
     public void onConfigurationChanged(final Configuration newConfig) {
         //Override
-    }
-
-    public boolean onCustomEvent(final String name, final Bundle data) {
-        //Override
-        return false;
     }
 }

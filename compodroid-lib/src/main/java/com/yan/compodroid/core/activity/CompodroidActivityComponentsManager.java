@@ -17,7 +17,8 @@ import java.util.Collection;
  * Delegates {@link Activity} lifecycle events to managed components.
  */
 public class CompodroidActivityComponentsManager<A extends Activity> extends
-        CompodroidComponentManager<A, CompodroidActivityComponent<A>> {
+        CompodroidComponentManager<A, CompodroidActivityComponent<A>>
+        implements IActivityDelegateMethods {
 
     public CompodroidActivityComponentsManager(A target) {
         super(target);
@@ -26,6 +27,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onCreate(final Bundle savedInstanceState) {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onCreateOptionsMenu(final Menu menu) {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onCreateOptionsMenu(menu);
@@ -44,6 +47,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onOptionsItemSelected(final MenuItem item) {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onOptionsItemSelected(item);
@@ -53,6 +57,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onSaveInstanceState(final Bundle outState) {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onSaveInstanceState(outState);
@@ -62,12 +67,14 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onActivityResult(final int requestCode, final int resultCode, Intent data) {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onActivityResult(requestCode, resultCode, data);
         }
     }
 
+    @Override
     public void onDestroy() {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onDestroy();
@@ -77,6 +84,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public boolean onBackPressed() {
         for (CompodroidActivityComponent component : getComponents()) {
             if (component.onBackPressed())
@@ -88,6 +96,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onStart() {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onStart();
@@ -97,6 +106,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onStop() {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onStop();
@@ -106,6 +116,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onPause() {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onPause();
@@ -115,6 +126,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onResume() {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onResume();
@@ -124,26 +136,11 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
     /**
      * Call this method from corresponding lyfecycle event of {@link Activity}
      */
+    @Override
     public void onConfigurationChanged(final Configuration newConfig) {
         for (CompodroidActivityComponent component : getComponents()) {
             component.onConfigurationChanged(newConfig);
         }
-    }
-
-    /**
-     * Used to send custom events that every component will recieve.
-     *
-     * @param eventName event name
-     * @param data      event data wrapped in bundle
-     * @return true if one or more components consumed the event
-     */
-    public boolean onCustomEvent(final String eventName, final Bundle data) {
-        boolean consumed = false;
-        for (CompodroidActivityComponent component : getComponents()) {
-            if (component.onCustomEvent(eventName, data))
-                consumed = true;
-        }
-        return consumed;
     }
 
     @Override

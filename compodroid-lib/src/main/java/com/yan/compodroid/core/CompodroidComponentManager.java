@@ -1,5 +1,9 @@
 package com.yan.compodroid.core;
 
+import com.yan.compodroid.core.activity.CompodroidActivityComponent;
+
+import android.os.Bundle;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -61,6 +65,22 @@ public class CompodroidComponentManager<T, C extends CompodroidComponent<T>> {
     }
 
     /**
+     * Used to send custom events that every component will recieve.
+     *
+     * @param eventName event name
+     * @param data      event data wrapped in bundle
+     * @return true if one or more components consumed the event
+     */
+    public boolean onCustomEvent(final String eventName, final Bundle data) {
+        boolean consumed = false;
+        for (CompodroidComponent component : getComponents()) {
+            if (component.onCustomEvent(eventName, data))
+                consumed = true;
+        }
+        return consumed;
+    }
+
+    /**
      * Returnes all the components managed by this manager
      *
      * @return unmodifiable collection of components
@@ -70,7 +90,7 @@ public class CompodroidComponentManager<T, C extends CompodroidComponent<T>> {
     }
 
     /**
-     * Returns concrete object that is "braked" to components.
+     * Returns concrete object that is "broken" into components.
      *
      * @return target object that all components operate on
      */

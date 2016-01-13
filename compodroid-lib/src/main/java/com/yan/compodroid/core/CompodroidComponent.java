@@ -41,7 +41,7 @@ public abstract class CompodroidComponent<T> {
     /**
      * Used to send custom events that component will recieve.
      *
-     * @param eventName event name
+     * @param name event name
      * @param data      event data wrapped in bundle
      * @return true if one or more components consumed the event
      */

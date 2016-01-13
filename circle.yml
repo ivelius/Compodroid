@@ -1,9 +1,13 @@
 machine:
+  java:
+    version:
+      oraclejdk8
   environment:
+    _JAVA_OPTIONS: "-Xms1024m -Xmx2048m"
     PATH: "~/$CIRCLE_PROJECT_REPONAME/gradle-2.9/bin:$PATH"
     TERM: "dumb"
-    ADB_INSTALL_TIMEOUT: "10"
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
+    ADB_INSTALL_TIMEOUT: 10
 
 dependencies:
   pre:
@@ -25,6 +29,7 @@ test:
 
     - ./gradlew test
     # copy the build outputs to artifacts
-    - cp -r my-project/build/outputs $CIRCLE_ARTIFACTS
+    - cp -r compodroid-lib/build/outputs $CIRCLE_ARTIFACTS
     # copy the test results to the test results directory.
-    - cp -r my-project/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+    - cp -r compodroid-lib/build/test-results/* $CIRCLE_TEST_REPORTS
+    - cp -r compodroid-lib/build/reports $CIRCLE_ARTIFACTS

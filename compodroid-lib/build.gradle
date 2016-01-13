@@ -63,5 +63,5 @@ dependencies {
 
 //Needed for building and uploading to bintray
 //TODO : run "bintrayUpload" to publish into bintray maven repo
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+apply from: 'installv1.gradle'
+apply from: 'bintrayv1.gradle'

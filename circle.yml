@@ -29,6 +29,6 @@ test:
 
     - ./gradlew test
     # copy the build outputs to artifacts
-    - cp -r Compodroid/build/outputs $CIRCLE_ARTIFACTS
+    - cp -r compodroid-lib/build/outputs $CIRCLE_ARTIFACTS
     # copy the test results to the test results directory.
-    - cp -r Compodroid/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+    - cp -r compodroid-lib/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS

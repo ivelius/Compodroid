@@ -1,3 +1,4 @@
+[![Circle CI](https://circleci.com/gh/ivelius/Compodroid/tree/master.svg?style=svg)](https://circleci.com/gh/ivelius/Compodroid/tree/master)
 # Compodroid
 Architectural Android Framework.
 

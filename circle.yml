@@ -32,3 +32,4 @@ test:
     - cp -r compodroid-lib/build/outputs $CIRCLE_ARTIFACTS
     # copy the test results to the test results directory.
     - cp -r compodroid-lib/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+    - cp -r compodroid-lib/build/reports $CIRCLE_ARTIFACTS

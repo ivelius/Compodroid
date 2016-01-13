@@ -7,9 +7,10 @@ machine:
 
 dependencies:
   pre:
-    - wget "https://services.gradle.org/distributions/gradle-2.9-bin.zip"; unzip gradle-2.9-bin.zip
-    - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-23
-    - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
+     - chmod +x gradlew
+#    - wget "https://services.gradle.org/distributions/gradle-2.9-bin.zip"; unzip gradle-2.9-bin.zip
+#    - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-23
+#    - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
 
 test:
   override:
@@ -20,7 +21,7 @@ test:
     # wait for it to have booted
 #    - circle-android wait-for-boot
     # run unit tests.
-    - chmod +x gradlew
+
     - ./gradlew test
     # copy the build outputs to artifacts
     - cp -r my-project/build/outputs $CIRCLE_ARTIFACTS

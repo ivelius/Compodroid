@@ -1,10 +1,16 @@
 machine:
   environment:
-    _JAVA_OPTIONS: "-Xms1024m -Xmx2048m"
     PATH: "~/$CIRCLE_PROJECT_REPONAME/gradle-2.9/bin:$PATH"
     TERM: "dumb"
+    ADB_INSTALL_TIMEOUT: "10"
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
-    ADB_INSTALL_TIMEOUT: 10
+
+dependencies:
+  pre:
+    - wget "https://services.gradle.org/distributions/gradle-2.9-bin.zip"; unzip gradle-2.9-bin.zip
+    - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-23
+    - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
+
 test:
   override:
     # start the emulator
@@ -14,6 +20,7 @@ test:
     # wait for it to have booted
 #    - circle-android wait-for-boot
     # run unit tests.
+    - chmod +x gradlew
     - ./gradlew test
     # copy the build outputs to artifacts
     - cp -r my-project/build/outputs $CIRCLE_ARTIFACTS

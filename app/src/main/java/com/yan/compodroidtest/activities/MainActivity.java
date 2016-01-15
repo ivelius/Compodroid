@@ -1,4 +1,4 @@
-package com.yan.compodroidtest;
+package com.yan.compodroidtest.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
+import com.yan.compodroidtest.R;
 import com.yan.compodroidtest.compopack.components.SaveInstanceComponent;
 import com.yan.compodroidtest.compopack.components.ViewInjectionComponent;
 

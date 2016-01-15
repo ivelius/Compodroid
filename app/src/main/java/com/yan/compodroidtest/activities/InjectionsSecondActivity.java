@@ -1,4 +1,4 @@
-package com.yan.compodroidtest;
+package com.yan.compodroidtest.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,13 +11,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.yan.compodroidtest.R;
 import com.yan.compodroidtest.compopack.components.InjectBundleExtraComponent;
 import com.yan.compodroidtest.compopack.components.SaveInstanceComponent;
 import com.yan.compodroidtest.compopack.components.ViewInjectionComponent;
 import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
 
-public class SecondActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
+public class InjectionsSecondActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
 
     private static final String EXTRA_KEY = "extra_key";
     private final CompodroidActivityComponentsManager mComponentsManager;
@@ -30,12 +31,12 @@ public class SecondActivity extends AppCompatActivity implements ViewInjectionCo
 
     public static Intent createIntent(final @NonNull Context ctx,
                                       final boolean state) {
-        Intent intent = new Intent(ctx, SecondActivity.class);
+        Intent intent = new Intent(ctx, InjectionsSecondActivity.class);
         intent.putExtra(EXTRA_KEY, state);
         return intent;
     }
 
-    public SecondActivity() {
+    public InjectionsSecondActivity() {
         mComponentsManager = Compodroid.createActivityComponentManager(this);
         mComponentsManager.addComponent(new ViewInjectionComponent(this));
         mComponentsManager.addComponent(new SaveInstanceComponent());

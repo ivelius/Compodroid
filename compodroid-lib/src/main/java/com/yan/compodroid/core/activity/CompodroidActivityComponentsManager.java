@@ -24,9 +24,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         super(target);
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -34,9 +32,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         }
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onCreateOptionsMenu(final Menu menu) {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -44,9 +40,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         }
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onOptionsItemSelected(final MenuItem item) {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -54,9 +48,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         }
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onSaveInstanceState(final Bundle outState) {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -64,9 +56,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         }
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onActivityResult(final int requestCode, final int resultCode, Intent data) {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -81,9 +71,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         }
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public boolean onBackPressed() {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -93,9 +81,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         return false;
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onStart() {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -103,9 +89,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         }
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onStop() {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -113,9 +97,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         }
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onPause() {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -123,9 +105,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         }
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onResume() {
         for (CompodroidActivityComponent component : getComponents()) {
@@ -133,9 +113,7 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         }
     }
 
-    /**
-     * Call this method from corresponding lyfecycle event of {@link Activity}
-     */
+
     @Override
     public void onConfigurationChanged(final Configuration newConfig) {
         for (CompodroidActivityComponent component : getComponents()) {

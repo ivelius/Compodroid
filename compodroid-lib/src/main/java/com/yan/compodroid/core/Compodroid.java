@@ -1,8 +1,10 @@
 package com.yan.compodroid.core;
 
-import android.app.Activity;
-
 import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
+import com.yan.compodroid.core.fragment.CompodroidFragmentComponentsManager;
+
+import android.app.Activity;
+import android.app.Fragment;
 
 
 /**
@@ -19,6 +21,17 @@ public class Compodroid {
      */
     public static <A extends Activity> CompodroidActivityComponentsManager createActivityComponentManager(final A activity) {
         return new CompodroidActivityComponentsManager(activity);
+    }
+
+    /**
+     * Creates a component manager that operates on Fragment , as long as Fragment is alive.
+     *
+     * @param fragment Fragment that components operate on
+     * @param <F>      Target type
+     * @return new instance of {@link CompodroidFragmentComponentsManager}
+     */
+    public static <F extends Fragment> CompodroidFragmentComponentsManager createFragmentComponentManager(final F fragment) {
+        return new CompodroidFragmentComponentsManager(fragment);
     }
 
     /**

@@ -19,8 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SecondActivity"
-            android:label="@string/title_activity_second"
+            android:name=".activities.InjectionsFirstActivity"
+            android:label="@string/title_activity_injections_first"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".activities.InjectionsSecondActivity"
+            android:label="@string/title_activity_injections_second"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>

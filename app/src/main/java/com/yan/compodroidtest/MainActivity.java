@@ -1,62 +1,40 @@
 package com.yan.compodroidtest;
 
+import com.yan.compodroidtest.activities.InjectionsFirstActivity;
+
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import com.yan.compodroid.core.Compodroid;
-import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
-import com.yan.compodroidtest.compopack.components.SaveInstanceComponent;
-import com.yan.compodroidtest.compopack.components.ViewInjectionComponent;
+import java.util.HashMap;
+import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
+public class MainActivity extends AppCompatActivity {
 
-
-    private final CompodroidActivityComponentsManager mComponentsManager;
-    @SaveInstanceComponent.SaveInstanceState
-    private boolean mSaved;
-
-    @ViewInjectionComponent.InjectView(R.id.text_view)
-    private TextView mTextView;
-
+    private final Map<String, Class<? extends Activity>> mTestStudyMap;
 
     public MainActivity() {
-        mComponentsManager = Compodroid.createActivityComponentManager(this);
-        mComponentsManager.addComponent(new ViewInjectionComponent(this));
-        mComponentsManager.addComponent(new SaveInstanceComponent());
+        mTestStudyMap = new HashMap<>();
+        mTestStudyMap.put("Injection Pack Test", InjectionsFirstActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mComponentsManager.onCreate(savedInstanceState);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(v -> {
-            mSaved = !mSaved;
-            mTextView.setText("Value is : " + mSaved);
+        ListView lv = (ListView) findViewById(R.id.case_study_list_view);
+        String[] data = mTestStudyMap.keySet().toArray(new String[mTestStudyMap.size()]);
+        lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data));
+        lv.setOnItemClickListener((parent, view, position, id) -> {
+            TextView tv = (TextView) view;
+            startActivity(new Intent(this, mTestStudyMap.get(tv.getText())));
         });
 
-        fab.show();
-        mTextView.setText("Value is : " + mSaved);
-        mTextView.setOnClickListener(v -> startActivity(SecondActivity.createIntent(this, mSaved)));
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(final Bundle outState) {
-        mComponentsManager.onSaveInstanceState(outState);
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public View provideRootView() {
-        return getWindow().getDecorView();
     }
 }

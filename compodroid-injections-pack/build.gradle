@@ -1,35 +1,7 @@
 apply plugin: 'com.android.library'
 
-//Define module specific properties
-ext {
 
-    //Bintray publishing information
-    bintrayRepo = 'maven'
-    bintrayName = 'compodroid'
-
-    publishedGroupId = 'com.yan.compodroid'
-    libraryName = 'compodroid'
-    artifact = 'compodroid-lib'
-
-    libraryDescription = 'A component oriented android framework'
-
-    siteUrl = 'https://github.com/ivelius/Compodroid'
-    gitUrl = 'https://github.com/ivelius/Compodroid.git'
-
-    libraryVersion = rootProject.ext.versionName
-
-    developerId = 'ivelius'
-    developerName = 'Yan Braslavsky'
-    developerEmail = 'yan.braslavskiy@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-
-
-
-}
-
+//TODO : add ext with data for bintray publish
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -55,9 +27,8 @@ dependencies {
     testCompile "org.powermock:powermock-module-junit4:$rootProject.ext.powerMockito"
     testCompile "org.powermock:powermock-api-mockito:$rootProject.ext.powerMockito"
     testCompile "commons-lang:commons-lang:$rootProject.ext.commonsLang"
-}
 
-//Needed for building and uploading to bintray
-//TODO : run "install" and after that "bintrayUpload" to publish into bintray maven repo
-apply from: '../installv1.gradle'
-apply from: '../bintrayv1.gradle'
+    //We are using the latest compodroid release version as provided during compilation.
+    //Thus we are excluding the compodroid-lib from packaging it as a dependancy.
+    provided "com.yan.compodroid:compodroid-lib:$rootProject.ext.versionName"
+}

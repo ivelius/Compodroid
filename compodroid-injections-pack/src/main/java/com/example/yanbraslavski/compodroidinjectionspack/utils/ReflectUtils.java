@@ -1,6 +1,4 @@
-package com.yan.compodroidtest.compopack.utils;
-
-import android.support.annotation.NonNull;
+package com.example.yanbraslavski.compodroidinjectionspack.utils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -21,7 +19,6 @@ public class ReflectUtils {
      * @return null safe set
      */
     public static
-    @NonNull
     Set<Field> findFields(Class<?> targetClass, Class<? extends Annotation> annotation) {
         Set<Field> set = new HashSet<>();
         Class<?> c = targetClass;

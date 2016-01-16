@@ -1,10 +1,10 @@
 package com.yan.compodroidtest.activities;
 
+import com.example.yanbraslavski.compodroidinjectionspack.components.SaveInstanceComponent;
+import com.example.yanbraslavski.compodroidinjectionspack.components.ViewInjectionComponent;
 import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
 import com.yan.compodroidtest.R;
-import com.yan.compodroidtest.compopack.components.SaveInstanceComponent;
-import com.yan.compodroidtest.compopack.components.ViewInjectionComponent;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
+
 
 public class InjectionsFirstActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
 

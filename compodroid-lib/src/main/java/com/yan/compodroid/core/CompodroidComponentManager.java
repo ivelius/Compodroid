@@ -1,7 +1,5 @@
 package com.yan.compodroid.core;
 
-import com.yan.compodroid.core.activity.CompodroidActivityComponent;
-
 import android.os.Bundle;
 
 import java.util.Collection;

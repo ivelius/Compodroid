@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Pair;
 
-import com.yan.compodroid.core.activity.CompodroidActivityComponent;
+import com.yan.compodroid.activity.CompodroidActivityComponent;
 import com.yan.compodroid.injectionspack.utils.ReflectUtils;
 
 import java.io.Serializable;

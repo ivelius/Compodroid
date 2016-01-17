@@ -1,10 +1,7 @@
-package com.yan.compodroid.core.fragment;
+package com.yan.compodroid.fragment;
 
 import com.yan.compodroid.core.CompodroidComponentManager;
-import com.yan.compodroid.core.activity.CompodroidActivityComponent;
-import com.yan.compodroid.core.activity.IActivityDelegateMethods;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -30,6 +27,17 @@ public class CompodroidFragmentComponentsManager<F extends Fragment> extends
 
     public CompodroidFragmentComponentsManager(F target) {
         super(target);
+    }
+
+
+    @Override
+    public void addComponent(CompodroidFragmentComponent<F> component) {
+        super.addComponent(component);
+    }
+
+    @Override
+    public boolean removeComponent(CompodroidFragmentComponent<F> component) {
+        return super.removeComponent(component);
     }
 
     @Override

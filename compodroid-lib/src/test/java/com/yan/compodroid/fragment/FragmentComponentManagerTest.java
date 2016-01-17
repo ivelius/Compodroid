@@ -1,7 +1,6 @@
-package com.yan.compodroid.core.fragment;
+package com.yan.compodroid.fragment;
 
 import com.yan.compodroid.core.Compodroid;
-import com.yan.compodroid.core.activity.IActivityDelegateMethods;
 
 import org.apache.commons.lang.ClassUtils;
 import org.junit.Before;

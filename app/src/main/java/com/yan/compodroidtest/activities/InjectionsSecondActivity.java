@@ -1,5 +1,13 @@
 package com.yan.compodroidtest.activities;
 
+import com.yan.compodroid.core.Compodroid;
+import com.yan.compodroid.activity.CompodroidActivityComponentsManager;
+import com.yan.compodroid.injectionspack.ComponentFactoryInjectionsPack;
+import com.yan.compodroid.injectionspack.components.SaveInstanceComponent;
+import com.yan.compodroid.injectionspack.components.ViewInjectionComponent;
+import com.yan.compodroid.injectionspack.components.bundleextra.InjectBundleExtra;
+import com.yan.compodroidtest.R;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +19,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yan.compodroidtest.R;
-import com.yan.compodroid.injectionspack.components.InjectBundleExtraComponent;
-import com.yan.compodroid.injectionspack.components.SaveInstanceComponent;
-import com.yan.compodroid.injectionspack.components.ViewInjectionComponent;
-import com.yan.compodroid.core.Compodroid;
-import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
-
 public class InjectionsSecondActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
 
     private static final String EXTRA_KEY = "extra_key";
@@ -26,7 +27,7 @@ public class InjectionsSecondActivity extends AppCompatActivity implements ViewI
     @ViewInjectionComponent.InjectView(R.id.text_view)
     private TextView mTextView;
 
-    @InjectBundleExtraComponent.InjectBundleExtra(EXTRA_KEY)
+    @InjectBundleExtra(EXTRA_KEY)
     private boolean mState;
 
     public static Intent createIntent(final @NonNull Context ctx,
@@ -40,7 +41,7 @@ public class InjectionsSecondActivity extends AppCompatActivity implements ViewI
         mComponentsManager = Compodroid.createActivityComponentManager(this);
         mComponentsManager.addComponent(new ViewInjectionComponent(this));
         mComponentsManager.addComponent(new SaveInstanceComponent());
-        mComponentsManager.addComponent(new InjectBundleExtraComponent());
+        mComponentsManager.addComponent(ComponentFactoryInjectionsPack.createInjectBundleExtraActivityComponent());
     }
 
     @Override

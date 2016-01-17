@@ -1,9 +1,7 @@
-package com.yan.compodroid.core.fragment;
+package com.yan.compodroid.fragment;
 
 import com.yan.compodroid.core.CompodroidComponent;
-import com.yan.compodroid.core.activity.IActivityDelegateMethods;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;

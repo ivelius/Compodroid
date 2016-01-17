@@ -1,4 +1,4 @@
-package com.yan.compodroid.core.activity;
+package com.yan.compodroid.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,6 +24,15 @@ public class CompodroidActivityComponentsManager<A extends Activity> extends
         super(target);
     }
 
+    @Override
+    public void addComponent(CompodroidActivityComponent<A> component) {
+        super.addComponent(component);
+    }
+
+    @Override
+    public boolean removeComponent(CompodroidActivityComponent<A> component) {
+        return super.removeComponent(component);
+    }
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {

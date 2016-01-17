@@ -1,4 +1,4 @@
-package com.yan.compodroid.core.activity;
+package com.yan.compodroid.activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;

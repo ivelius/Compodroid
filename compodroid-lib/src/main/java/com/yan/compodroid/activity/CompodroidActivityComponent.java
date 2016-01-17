@@ -1,4 +1,4 @@
-package com.yan.compodroid.core.activity;
+package com.yan.compodroid.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +19,16 @@ import com.yan.compodroid.core.CompodroidComponent;
  */
 public abstract class CompodroidActivityComponent<A extends Activity> extends
         CompodroidComponent<A> implements IActivityDelegateMethods{
+
+    @Override
+    protected void onAddedToManager() {
+        //Override
+    }
+
+    @Override
+    protected void onRemovedFromManager() {
+        //Override
+    }
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {

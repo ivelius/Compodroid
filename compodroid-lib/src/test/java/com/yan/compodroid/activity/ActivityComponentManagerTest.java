@@ -1,4 +1,4 @@
-package com.yan.compodroid.core.activity;
+package com.yan.compodroid.activity;
 
 import com.yan.compodroid.core.Compodroid;
 
@@ -10,11 +10,6 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -1,7 +1,7 @@
 package com.yan.compodroid.core;
 
-import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
-import com.yan.compodroid.core.fragment.CompodroidFragmentComponentsManager;
+import com.yan.compodroid.activity.CompodroidActivityComponentsManager;
+import com.yan.compodroid.fragment.CompodroidFragmentComponentsManager;
 
 import android.app.Activity;
 import android.app.Fragment;

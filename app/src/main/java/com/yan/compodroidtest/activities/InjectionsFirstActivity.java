@@ -3,7 +3,7 @@ package com.yan.compodroidtest.activities;
 import com.yan.compodroid.injectionspack.components.SaveInstanceComponent;
 import com.yan.compodroid.injectionspack.components.ViewInjectionComponent;
 import com.yan.compodroid.core.Compodroid;
-import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
+import com.yan.compodroid.activity.CompodroidActivityComponentsManager;
 import com.yan.compodroidtest.R;
 
 import android.os.Bundle;

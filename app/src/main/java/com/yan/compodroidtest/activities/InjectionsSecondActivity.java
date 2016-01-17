@@ -12,9 +12,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yan.compodroidtest.R;
-import com.example.yanbraslavski.compodroidinjectionspack.components.InjectBundleExtraComponent;
-import com.example.yanbraslavski.compodroidinjectionspack.components.SaveInstanceComponent;
-import com.example.yanbraslavski.compodroidinjectionspack.components.ViewInjectionComponent;
+import com.yan.compodroid.injectionspack.components.InjectBundleExtraComponent;
+import com.yan.compodroid.injectionspack.components.SaveInstanceComponent;
+import com.yan.compodroid.injectionspack.components.ViewInjectionComponent;
 import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
 

@@ -1,4 +1,4 @@
-package com.example.yanbraslavski.compodroidinjectionspack.utils;
+package com.yan.compodroid.injectionspack.utils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

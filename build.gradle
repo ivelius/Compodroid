@@ -7,7 +7,8 @@ ext{
 
     //Versioning
     versionCode = 1
-    versionName = '0.0.2-ALPHA'
+    magorVersionNumber = '0'
+    versionName = "$magorVersionNumber.0.$versionCode"
 
     //TODO : publish to maven central in the future
     //http://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en

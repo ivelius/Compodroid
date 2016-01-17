@@ -1,11 +1,11 @@
-package com.example.yanbraslavski.compodroidinjectionspack.components;
+package com.yan.compodroid.injectionspack.components;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.yan.compodroid.core.activity.CompodroidActivityComponent;
-import com.example.yanbraslavski.compodroidinjectionspack.utils.ReflectUtils;
+import com.yan.compodroid.injectionspack.utils.ReflectUtils;
 
 import java.io.Serializable;
 import java.lang.annotation.ElementType;

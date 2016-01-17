@@ -1,4 +1,4 @@
-package com.example.yanbraslavski.compodroidinjectionspack;
+package com.yan.compodroid.injectionspack;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,9 +1,11 @@
 package com.yan.compodroidtest.activities;
 
-import com.yan.compodroid.injectionspack.components.SaveInstanceComponent;
-import com.yan.compodroid.injectionspack.components.ViewInjectionComponent;
-import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.activity.CompodroidActivityComponentsManager;
+import com.yan.compodroid.core.Compodroid;
+import com.yan.compodroid.injectionspack.ComponentFactoryInjectionsPack;
+import com.yan.compodroid.injectionspack.components.ViewInjectionComponent;
+import com.yan.compodroid.injectionspack.components.saveinstancestate.SaveInstanceComponent;
+import com.yan.compodroid.injectionspack.components.saveinstancestate.SaveInstanceState;
 import com.yan.compodroidtest.R;
 
 import android.os.Bundle;
@@ -19,7 +21,7 @@ public class InjectionsFirstActivity extends AppCompatActivity implements ViewIn
 
 
     private final CompodroidActivityComponentsManager mComponentsManager;
-    @SaveInstanceComponent.SaveInstanceState
+    @SaveInstanceState
     private boolean mSaved;
 
     @ViewInjectionComponent.InjectView(R.id.text_view)
@@ -29,7 +31,7 @@ public class InjectionsFirstActivity extends AppCompatActivity implements ViewIn
     public InjectionsFirstActivity() {
         mComponentsManager = Compodroid.createActivityComponentManager(this);
         mComponentsManager.addComponent(new ViewInjectionComponent(this));
-        mComponentsManager.addComponent(new SaveInstanceComponent());
+        mComponentsManager.addComponent(ComponentFactoryInjectionsPack.createSaveInstanceStateActivityComponent());
     }
 
     @Override

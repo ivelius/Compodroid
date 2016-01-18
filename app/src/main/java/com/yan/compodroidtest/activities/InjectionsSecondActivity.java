@@ -1,11 +1,11 @@
 package com.yan.compodroidtest.activities;
 
-import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.activity.CompodroidActivityComponentsManager;
+import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.injectionspack.ComponentFactoryInjectionsPack;
-import com.yan.compodroid.injectionspack.components.saveinstancestate.SaveInstanceComponent;
-import com.yan.compodroid.injectionspack.components.ViewInjectionComponent;
 import com.yan.compodroid.injectionspack.components.bundleextra.InjectBundleExtra;
+import com.yan.compodroid.injectionspack.components.viewinjections.InjectView;
+import com.yan.compodroid.injectionspack.components.viewinjections.InjectViewComponent;
 import com.yan.compodroidtest.R;
 
 import android.content.Context;
@@ -19,12 +19,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-public class InjectionsSecondActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
+public class InjectionsSecondActivity extends AppCompatActivity {
 
     private static final String EXTRA_KEY = "extra_key";
     private final CompodroidActivityComponentsManager mComponentsManager;
 
-    @ViewInjectionComponent.InjectView(R.id.text_view)
+    @InjectView(R.id.text_view)
     private TextView mTextView;
 
     @InjectBundleExtra(EXTRA_KEY)
@@ -39,7 +39,7 @@ public class InjectionsSecondActivity extends AppCompatActivity implements ViewI
 
     public InjectionsSecondActivity() {
         mComponentsManager = Compodroid.createActivityComponentManager(this);
-        mComponentsManager.addComponent(new ViewInjectionComponent(this));
+        mComponentsManager.addComponent(ComponentFactoryInjectionsPack.createInjectViewActivityComponent());
         mComponentsManager.addComponent(ComponentFactoryInjectionsPack.createSaveInstanceStateActivityComponent());
         mComponentsManager.addComponent(ComponentFactoryInjectionsPack.createInjectBundleExtraActivityComponent());
     }
@@ -65,11 +65,5 @@ public class InjectionsSecondActivity extends AppCompatActivity implements ViewI
     protected void onSaveInstanceState(final Bundle outState) {
         mComponentsManager.onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
-    }
-
-
-    @Override
-    public View provideRootView() {
-        return getWindow().getDecorView();
     }
 }

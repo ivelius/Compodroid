@@ -6,10 +6,12 @@ import com.yan.compodroid.fragment.CompodroidFragmentComponent;
 import com.yan.compodroid.fragment.CompodroidFragmentComponentAdapter;
 import com.yan.compodroid.injectionspack.components.bundleextra.InjectBundleExtraComponent;
 import com.yan.compodroid.injectionspack.components.saveinstancestate.SaveInstanceComponent;
+import com.yan.compodroid.injectionspack.components.viewinjections.InjectViewComponent;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * Created by yan.braslavski on 1/17/16.
@@ -126,6 +128,50 @@ public class ComponentFactoryInjectionsPack {
                     @Override
                     public void onSaveInstanceState(Bundle outState) {
                         getAdaptee().saveInstanceState(outState, getTarget());
+                    }
+                };
+            }
+        }.adapt();
+    }
+
+    /**
+     * Annotate your class fields with {@link com.yan.compodroid.injectionspack.components.viewinjections.InjectView}
+     * in order to easily inject annotaded member views of your Activity.
+     *
+     * Fileds injection takes place in "onCreate" method of the activity.
+     * Make sure to add this component as early as possible in your {@link com.yan.compodroid.activity.CompodroidActivityComponentsManager}
+     */
+    public static CompodroidActivityComponent<Activity> createInjectViewActivityComponent() {
+        return new CompodroidActivityComponentAdapter<InjectViewComponent, Activity>(new InjectViewComponent()) {
+            @Override
+            public CompodroidActivityComponent<Activity> adapt() {
+                return new CompodroidActivityComponent<Activity>() {
+                    @Override
+                    public void onCreate(Bundle savedInstanceState) {
+                        super.onCreate(savedInstanceState);
+                        getAdaptee().injectViews(getTarget().getWindow().getDecorView(), getTarget());
+                    }
+                };
+            }
+        }.adapt();
+    }
+
+    /**
+     * Annotate your class fields with {@link com.yan.compodroid.injectionspack.components.viewinjections.InjectView}
+     * in order to easily inject annotaded member views of your Fragment.
+     *
+     * Fileds injection takes place in "onViewCreated" method of the Fragment.
+     * Make sure to add this component as early as possible in your {@link com.yan.compodroid.fragment.CompodroidFragmentComponentsManager}
+     */
+    public static CompodroidFragmentComponent<Fragment> createInjectViewFragmentComponent() {
+        return new CompodroidFragmentComponentAdapter<InjectViewComponent, Fragment>(new InjectViewComponent()) {
+            @Override
+            public CompodroidFragmentComponent<Fragment> adapt() {
+                return new CompodroidFragmentComponent<Fragment>() {
+                    @Override
+                    public void onViewCreated(View view, Bundle savedInstanceState) {
+                        super.onViewCreated(view, savedInstanceState);
+                        getAdaptee().injectViews(view, getTarget());
                     }
                 };
             }

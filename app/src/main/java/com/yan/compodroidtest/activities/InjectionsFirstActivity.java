@@ -3,9 +3,9 @@ package com.yan.compodroidtest.activities;
 import com.yan.compodroid.activity.CompodroidActivityComponentsManager;
 import com.yan.compodroid.core.Compodroid;
 import com.yan.compodroid.injectionspack.ComponentFactoryInjectionsPack;
-import com.yan.compodroid.injectionspack.components.ViewInjectionComponent;
-import com.yan.compodroid.injectionspack.components.saveinstancestate.SaveInstanceComponent;
 import com.yan.compodroid.injectionspack.components.saveinstancestate.SaveInstanceState;
+import com.yan.compodroid.injectionspack.components.viewinjections.InjectView;
+import com.yan.compodroid.injectionspack.components.viewinjections.InjectViewComponent;
 import com.yan.compodroidtest.R;
 
 import android.os.Bundle;
@@ -17,20 +17,20 @@ import android.widget.TextView;
 
 
 
-public class InjectionsFirstActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
+public class InjectionsFirstActivity extends AppCompatActivity {
 
 
     private final CompodroidActivityComponentsManager mComponentsManager;
     @SaveInstanceState
     private boolean mSaved;
 
-    @ViewInjectionComponent.InjectView(R.id.text_view)
+    @InjectView(R.id.text_view)
     private TextView mTextView;
 
 
     public InjectionsFirstActivity() {
         mComponentsManager = Compodroid.createActivityComponentManager(this);
-        mComponentsManager.addComponent(new ViewInjectionComponent(this));
+        mComponentsManager.addComponent(ComponentFactoryInjectionsPack.createInjectViewActivityComponent());
         mComponentsManager.addComponent(ComponentFactoryInjectionsPack.createSaveInstanceStateActivityComponent());
     }
 
@@ -58,10 +58,5 @@ public class InjectionsFirstActivity extends AppCompatActivity implements ViewIn
     protected void onSaveInstanceState(final Bundle outState) {
         mComponentsManager.onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public View provideRootView() {
-        return getWindow().getDecorView();
     }
 }

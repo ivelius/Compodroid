@@ -5,22 +5,22 @@ ext {
 
     //Bintray publishing information
     bintrayRepo = 'maven'
-    bintrayName = 'compodroid'
+    bintrayName = 'CompodroidInjectionsPack'
 
     publishedGroupId = 'com.yan.compodroid'
-    libraryName = 'compodroid'
+    libraryName = 'injections-pack'
     //Artifact name MUST be the same as gradle project name
     //otherwise POM file will not get uploaded
     artifact = project.name
 
-    libraryDescription = 'A component oriented android framework'
+    libraryDescription = 'Plugin for Compodroid'
 
     siteUrl = 'https://github.com/ivelius/Compodroid'
     gitUrl = 'https://github.com/ivelius/Compodroid.git'
 
     releaseCode = "0"
     versionCode = "1"
-    postFix = "-ALPHA"
+    postFix = "-BETA"
     libraryVersion = "$rootProject.ext.magorVersionNumber.$releaseCode.$versionCode$postFix"
 
     developerId = 'ivelius'
@@ -33,7 +33,6 @@ ext {
 
 
 }
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -59,6 +58,9 @@ dependencies {
     testCompile "org.powermock:powermock-module-junit4:$rootProject.ext.powerMockito"
     testCompile "org.powermock:powermock-api-mockito:$rootProject.ext.powerMockito"
     testCompile "commons-lang:commons-lang:$rootProject.ext.commonsLang"
+
+    //We are excluding the compodroid-lib from packaging it as a dependancy.
+    provided project(':compodroid-lib')
 }
 
 //Needed for building and uploading to bintray

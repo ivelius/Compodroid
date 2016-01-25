@@ -1,10 +1,12 @@
 package com.yan.compodroidtest.activities;
 
+import com.yan.compodroid.activity.CompodroidActivityComponentsManager;
 import com.yan.compodroid.core.Compodroid;
-import com.yan.compodroid.core.activity.CompodroidActivityComponentsManager;
+import com.yan.compodroid.injectionspack.ComponentFactoryInjectionsPack;
+import com.yan.compodroid.injectionspack.components.saveinstancestate.SaveInstanceState;
+import com.yan.compodroid.injectionspack.components.viewinjections.InjectView;
+import com.yan.compodroid.injectionspack.components.viewinjections.InjectViewComponent;
 import com.yan.compodroidtest.R;
-import com.yan.compodroidtest.compopack.components.SaveInstanceComponent;
-import com.yan.compodroidtest.compopack.components.ViewInjectionComponent;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,21 +15,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-public class InjectionsFirstActivity extends AppCompatActivity implements ViewInjectionComponent.RootViewProvider {
+
+
+public class InjectionsFirstActivity extends AppCompatActivity {
 
 
     private final CompodroidActivityComponentsManager mComponentsManager;
-    @SaveInstanceComponent.SaveInstanceState
+    @SaveInstanceState
     private boolean mSaved;
 
-    @ViewInjectionComponent.InjectView(R.id.text_view)
+    @InjectView(R.id.text_view)
     private TextView mTextView;
 
 
     public InjectionsFirstActivity() {
         mComponentsManager = Compodroid.createActivityComponentManager(this);
-        mComponentsManager.addComponent(new ViewInjectionComponent(this));
-        mComponentsManager.addComponent(new SaveInstanceComponent());
+        mComponentsManager.addComponent(ComponentFactoryInjectionsPack.createInjectViewActivityComponent());
+        mComponentsManager.addComponent(ComponentFactoryInjectionsPack.createSaveInstanceStateActivityComponent());
     }
 
     @Override
@@ -54,10 +58,5 @@ public class InjectionsFirstActivity extends AppCompatActivity implements ViewIn
     protected void onSaveInstanceState(final Bundle outState) {
         mComponentsManager.onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public View provideRootView() {
-        return getWindow().getDecorView();
     }
 }

@@ -1,1 +1,1 @@
-include ':app', ':compodroid-lib'
+include ':app', ':compodroid-lib', ':injections-pack'

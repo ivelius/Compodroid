@@ -1,0 +1,40 @@
+general:
+  branches:
+    ignore:
+      - gh-pages # list of branches to ignore
+
+machine:
+  java:
+    version:
+      oraclejdk8
+  environment:
+    _JAVA_OPTIONS: "-Xms1024m -Xmx2048m"
+    PATH: "~/$CIRCLE_PROJECT_REPONAME/gradle-2.9/bin:$PATH"
+    TERM: "dumb"
+    GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
+    ADB_INSTALL_TIMEOUT: 10
+
+dependencies:
+  pre:
+     # Needed to gain permission to execute gradlew commands
+     - chmod +x gradlew
+     - wget "https://services.gradle.org/distributions/gradle-2.9-bin.zip"; unzip gradle-2.9-bin.zip
+     - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-23
+     - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
+
+test:
+  override:
+    # start the emulator
+#    - emulator -avd circleci-android22 -no-audio -no-window:
+#        background: true
+#        parallel: true
+    # wait for it to have booted
+#    - circle-android wait-for-boot
+    # run unit tests.
+
+    - ./gradlew test
+    # copy the build outputs to artifacts
+    - cp -r compodroid-lib/build/outputs $CIRCLE_ARTIFACTS
+    # copy the test results to the test results directory.
+    - cp -r compodroid-lib/build/test-results/* $CIRCLE_TEST_REPORTS
+    - cp -r compodroid-lib/build/reports $CIRCLE_ARTIFACTS

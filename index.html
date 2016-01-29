@@ -43,6 +43,15 @@ This is an example when Compodroid is naturally improving your code organization
 <h2>
 <a id="are-there-more-benefits-using-compodroid-" class="anchor" href="#are-there-more-benefits-using-compodroid-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Are there more benefits using Compodroid ?</h2>
 
+<p>Certainly.</p>
+
+<ul>
+<li>One of the biggest advantages is modularity of your code. A component done right is a component that can be added or removed at any given time. Hence , you will always have a chance to add or remove functionality on the fly to/from your target. </li>
+<li>A component can be <em>multi targeted</em> .Component created for one target can be translated to another target using <a href="https://github.com/ivelius/Compodroid/blob/master/compodroid-lib/src/main/java/com/yan/compodroid/core/CompodroidComponentAdapter.java">ComponentAdapter</a>.That allows you to reuse the same functionality across all of your classes , as long as you can adapt them in a manner that makes sense to you.</li>
+<li>Compodroid aims to be community driven. There might be already plug and play solution to your problem that is provided as a <em>Compodroid plugin package</em> . As an example see <a href="https://github.com/ivelius/Compodroid/tree/master/injections-pack">injections-pack</a> .</li>
+<li>Fast iteration can be achieved through encapsulating "features" into components. If at some point you decide that you need to remove/disable a feature of your app , simply detach the component from your target. For example the entire flow of Login with Facebook can be encapsulated into a ActivityComponent . When you no longer want this feature , simply detach the component . If you no longer want it ever , you can delete one file of the component and forget this feature ever existed.</li>
+</ul>
+
 <h2>
 <a id="compodroid-architecture" class="anchor" href="#compodroid-architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compodroid Architecture</h2>
 

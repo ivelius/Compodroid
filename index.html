@@ -37,6 +37,23 @@
 <p>Compodroid is an <a href="https://www.android.com/">Android</a> library that allows you to scatter your code around target specific "components" , rather than writing the code inside the target class itself. Compodroid turns any class into a "set of components" that operate independently allowing hight level of code modularity. Being design specifically with Android in mind , Compodroid has a build in support for all <a href="https://www.android.com/">Android</a> core elements such as : <a href="http://developer.android.com/reference/android/app/Activity.html">Activities</a> , <a href="http://developer.android.com/reference/android/app/Fragment.html">Fragments</a> , <a href="http://developer.android.com/reference/android/app/Service.html">Services</a> , <a href="http://developer.android.com/reference/android/content/BroadcastReceiver.html">Broadcast Recievers</a> ,etc... </p>
 
 <h2>
+<a id="why-to-use-compodroid-" class="anchor" href="#why-to-use-compodroid-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why to use Compodroid ?</h2>
+
+<p>There are 2 common scenarios in which your project can benefit from Compodroid .</p>
+
+<h3>
+<a id="complicated-one-screen-app" class="anchor" href="#complicated-one-screen-app" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Complicated One Screen App</h3>
+
+<p>Imagine you have a single screen app , which is contains a ViewPager , a sliding drawer , navigation tabs and deep drill down hierarchy for each pager view screen. While you will try to organize your functionality across one <em>Host</em> Activity and many fragments in it , you will soon realize that there is too much code to put into the <em>Host</em> Activity ,and you will naturally scatter the functionality across different classes that cooperate with your <em>Host</em> Activity . In regards to your fragments , they will probably have a lot of similarities and you will try to reuse code by subclasing a <em>BaseFragment</em> and to put more code into it that actually every subclassing Fragment needs. 
+This is an example when Compodroid is naturally improving your code organization. <em>Host</em> Activity can be broken into "Components" where each component will define a "feature" or a functionality. The same is true for fragments. Instead of subclassing a <em>BaseFragment</em> (which is still possible with Compodroid) , you will add components to each fragment that actually needs them . In such a way you will not only reuse your code but will also save a memory by not loading methods of a superclass that you don't actually need.</p>
+
+<h3>
+<a id="deep-activitiesfragments-hierarchy" class="anchor" href="#deep-activitiesfragments-hierarchy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deep Activities/Fragments Hierarchy</h3>
+
+<h2>
+<a id="are-there-more-benefits-using-compodroid-" class="anchor" href="#are-there-more-benefits-using-compodroid-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Are there more benefits using Compodroid ?</h2>
+
+<h2>
 <a id="compodroid-architecture" class="anchor" href="#compodroid-architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compodroid Architecture</h2>
 
 <p>Compodroid main idea is to stay simple and thin , while highly scalable.
@@ -52,7 +69,7 @@ To make Compodroid <a href="https://www.android.com/">Android</a> friendly ,the 
 <a id="component" class="anchor" href="#component" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Component</h3>
 
 <p>Is a peace of logic that can be added to Component Manager. Component will receive events from Component Manager that it is attached to. Amount of events or callback methods will vary depending on the Component Manager .
-The Component also have a <em>Target</em> and can be added to Managers that targeting the same <em>Target</em> class as the component.</p>
+The Component also have a <em>Target</em> and can be added <strong>only</strong> to Managers that targeting the same <em>Target</em> class as the component.</p>
 
 <h2>
 <a id="how-to-use-compodroid-" class="anchor" href="#how-to-use-compodroid-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use Compodroid ?</h2>

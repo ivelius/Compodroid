@@ -50,6 +50,8 @@ This is an example when Compodroid is naturally improving your code organization
 <h3>
 <a id="deep-activitiesfragments-hierarchy" class="anchor" href="#deep-activitiesfragments-hierarchy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deep Activities/Fragments Hierarchy</h3>
 
+<p>Imagine you have BaseFragment that have some common functionality to all your fragments.You extend it to have a "PopupFragment" "ToastFragment" and a "BadgeFragment" . Now Both "PopupFragment" and "ToastFragment" can appear with animation into a screen. You would like to write your animation code somewhere once and reuse it everywhere it is needed. But writing the code in "BaseFragment" will actually cause a badge fragment to also appear with animation. So you decide to extend the base fragment with "AbstractAnimatableFragment" and use it as a superclass of your "PopupFragment" and "ToastFragment". Well done ! Now what if both "ToastFragment" and "BadgeFragment" can auto disappear after 5 seconds. Will you create a subclass of "BaseFragment" and then "DissapearableFragment" for a "BadgeFragment" , and then "AnimatableDissapearableFragment" and use it for "ToastFragment" ? You see where it is going right ? Rather than bloating your project with a special subclass for every case , you can just encapsulate your desired functionality in "AppearableFragmentComponent" and "DissapearableFragmentComponent". And attach those to fragments that need it.</p>
+
 <h2>
 <a id="are-there-more-benefits-using-compodroid-" class="anchor" href="#are-there-more-benefits-using-compodroid-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Are there more benefits using Compodroid ?</h2>
 

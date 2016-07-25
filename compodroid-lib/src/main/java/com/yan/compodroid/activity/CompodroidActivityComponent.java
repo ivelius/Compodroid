@@ -1,13 +1,13 @@
 package com.yan.compodroid.activity;
 
+import com.yan.compodroid.core.CompodroidComponent;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.yan.compodroid.core.CompodroidComponent;
 
 
 /**
@@ -88,6 +88,11 @@ public abstract class CompodroidActivityComponent<A extends Activity> extends
 
     @Override
     public void onConfigurationChanged(final Configuration newConfig) {
+        //Override
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
         //Override
     }
 }

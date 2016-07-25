@@ -12,27 +12,29 @@ import android.view.MenuItem;
  */
 public interface IActivityDelegateMethods {
 
-    public void onCreate(final Bundle savedInstanceState);
+    void onCreate(final Bundle savedInstanceState);
 
-    public void onCreateOptionsMenu(final Menu menu);
+    void onCreateOptionsMenu(final Menu menu);
 
-    public void onOptionsItemSelected(final MenuItem item);
+    void onOptionsItemSelected(final MenuItem item);
 
-    public void onSaveInstanceState(final Bundle outState);
+    void onSaveInstanceState(final Bundle outState);
 
-    public void onActivityResult(final int requestCode, final int resultCode, final Intent data);
+    void onActivityResult(final int requestCode, final int resultCode, final Intent data);
 
-    public void onDestroy();
+    void onDestroy();
 
-    public boolean onBackPressed();
+    boolean onBackPressed();
 
-    public void onStart();
+    void onStart();
 
-    public void onStop();
+    void onStop();
 
-    public void onPause();
+    void onPause();
 
-    public void onResume();
+    void onResume();
 
-    public void onConfigurationChanged(final Configuration newConfig);
+    void onConfigurationChanged(final Configuration newConfig);
+
+    void onNewIntent(final Intent intent);
 }

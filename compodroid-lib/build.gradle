@@ -19,7 +19,7 @@ ext {
     gitUrl = 'https://github.com/ivelius/Compodroid.git'
 
     releaseCode = "0"
-    versionCode = "1"
+    versionCode = "2"
     postFix = "-ALPHA"
     libraryVersion = "$rootProject.ext.magorVersionNumber.$releaseCode.$versionCode$postFix"
 

@@ -1,6 +1,12 @@
 [![Circle CI](https://circleci.com/gh/ivelius/Compodroid/tree/master.svg?style=svg)](https://circleci.com/gh/ivelius/Compodroid/tree/master)
+
+## No Longer Supported !
+This project is no longer supported and will be shut down by the end of 2019.
+
 # Compodroid
 Architectural Android Framework.
+
+
 
 ### Motivation
 
